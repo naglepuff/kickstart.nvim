@@ -92,6 +92,8 @@ vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 -- NOTE to self: I am using the "Hack" font on my work computer. https://github.com/source-foundry/Hack
+-- The "nerd font" patch can be found at https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack
+-- Install in ~/.local/share/fonts/HackNerd/ and/or /usr/share/fonts/HackNerd/
 vim.g.have_nerd_font = false
 
 -- [[ Setting options ]]
@@ -213,6 +215,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
   end,
+})
+
+-- mln notice the difference between using a callback fn and pattern/command
+vim.api.nvim_create_autocmd('BufWritePre', {
+  desc = 'Remove trailing whitespace on save',
+  group = vim.api.nvim_create_augroup('mln-clear-trailing-whitespace', { clear = true }),
+  pattern = { '*' },
+  command = [[%s/\s\+$//e]],
 })
 
 -- [[ Install `lazy.nvim` plugin manager ]]
