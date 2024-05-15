@@ -91,6 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
+-- NOTE to self: I am using the "Hack" font on my work computer. https://github.com/source-foundry/Hack
 vim.g.have_nerd_font = false
 
 -- [[ Setting options ]]
@@ -154,6 +155,13 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- mln Set additional options
+-- Set a reasonable default tab stop. Expand tabs to be spaces.
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = true
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -189,6 +197,9 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- mln Keybinds
+vim.keymap.set('i', 'jj', '<Esc>', { desc = 'Exit insert mode without hitting <Esc>' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
